@@ -1,0 +1,863 @@
+<!DOCTYPE html> 
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALAN KUBLER</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: #fbfbfb;
+        overflow-x: hidden;
+      }
+
+      /* =========================
+         DESKTOP STYLES (unchanged)
+         ========================= */
+      
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 30px 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        background: #fbfbfb;
+        transition: top 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      .logo {
+        font-size: 2em;
+        color: #555;
+        cursor: default;
+      }
+      .logo span {
+        color: #7d2ae8;
+      }
+      
+      .navigation {
+        margin-left: 0;
+      }
+      .navigation a {
+        font-size: 1em;
+        color: #555;
+        text-decoration: none;
+        margin-right: 40px;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+      .navigation a:hover {
+        color: #7d2ae8;
+      }
+      
+      .btn-talk {
+        color: #fff;
+        text-decoration: none;
+        padding: 8px 35px;
+        background: #7d2ae8;
+        border-radius: 10px;
+        border: 2px solid #7d2ae8;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+      .btn-talk:hover {
+        color: #7d2ae8;
+        background: transparent;
+      }
+
+      .home {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url('background.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        padding: 30px 100px;
+      }
+
+      .content {
+        max-width: 500px;
+        color: #555;
+        position: relative;
+        z-index: 1;
+      }
+
+      .content::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: rgba(125, 42, 232, 0.08);
+        border-radius: 50%;
+        filter: blur(40px);
+        z-index: -1;
+        top: -50px;
+        left: -100px;
+      }
+
+      .content h2 {
+        font-size: 3em;
+        color: #7d2ae8;
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .content h2 span {
+        color: #7d2ae8;
+      }
+      .content h4 {
+        font-size: 2em;
+      }
+      .content p {
+        padding: 10px 0 40px 0;
+      }
+
+      section {
+        min-height: 100vh;
+        padding: 120px 100px 80px 100px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .content {
+        max-width: 500px;
+        color: #555;
+        opacity: 0;
+        transform: translateX(0);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .fade-in-left {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+      }
+      .fade-in-right {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+      }
+      .offscreen-left {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+      .offscreen-right {
+        transform: translateX(50px);
+        opacity: 0;
+      }
+
+      .btn-group {
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+      }
+      .btn-group a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 40px;
+        background: #7d2ae8;
+        border-radius: 10px;
+        border: 2px solid #7d2ae8;
+        font-weight: 500;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .btn-group a:hover:nth-child(1) {
+        color: #7d2ae8;
+        background: transparent;
+      }
+      .btn-group a:nth-child(2) {
+        color: #7d2ae8;
+        background: transparent;
+        padding: 10px 30px;
+      }
+      .btn-group a:hover:nth-child(2) {
+        color: #fbfbfb;
+        background: #7d2ae8;
+      }
+
+      .social-icons {
+        position: absolute;
+        bottom: 80px;
+      }
+      .social-icons a {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        background: #7d2ae8;
+        border-radius: 50%;
+        margin-right: 22px;
+        text-align: center;
+        line-height: 35px;
+        border: 1px solid #fff;
+        outline: 2px solid #7d2ae8;
+        transition: 0.3s;
+      }
+      .social-icons a:hover {
+        transform: translateY(-5px);
+      }
+      .social-icons a i {
+        color: #fff;
+      }
+
+      .section-1 {
+        justify-content: flex-start;
+        background: #fbfbfb;
+      }
+      .section-1 .content {
+        order: 0;
+      }
+      .section-1 .empty-space {
+        flex: 1;
+        background: #fbfbfb;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section-2 {
+        justify-content: flex-end;
+        background: #fbfbfb;
+      }
+      .section-2 .content {
+        order: 1;
+      }
+      .section-2 .empty-space {
+        flex: 1;
+        background: #fbfbfb;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .empty-space::before,
+      .empty-space::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(125, 42, 232, 0.15);
+        filter: blur(25px);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .empty-space::before {
+        width: 250px;
+        height: 250px;
+        top: -80px;
+        left: -80px;
+      }
+      .empty-space::after {
+        width: 150px;
+        height: 150px;
+        bottom: -60px;
+        right: -60px;
+      }
+
+      .decorative-circles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .decorative-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(125, 42, 232, 0.08);
+        pointer-events: none;
+      }
+
+      .decorative-circle.large {
+        width: 300px;
+        height: 300px;
+        filter: blur(35px);
+        background: rgba(125, 42, 232, 0.12);
+      }
+
+      .decorative-circle.medium {
+        width: 200px;
+        height: 200px;
+        filter: blur(25px);
+        background: rgba(125, 42, 232, 0.10);
+      }
+
+      .decorative-circle.small {
+        width: 120px;
+        height: 120px;
+        filter: blur(20px);
+        background: rgba(125, 42, 232, 0.08);
+      }
+
+      .decorative-circle.tiny {
+        width: 80px;
+        height: 80px;
+        filter: blur(15px);
+        background: rgba(125, 42, 232, 0.06);
+      }
+
+      .content-bg-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(125, 42, 232, 0.04);
+        filter: blur(30px);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .separator {
+        position: relative;
+        width: 100%;
+        height: 80px;
+        overflow: hidden;
+        background: #fbfbfb;
+      }
+      .separator-left {
+        background: #7d2ae8;
+        clip-path: polygon(0 100%, 100% 0, 100% 100%);
+      }
+      .separator-right {
+        background: #7d2ae8;
+        clip-path: polygon(0 0, 100% 100%, 0 100%);
+      }
+
+      .section-3-special {
+        display: flex;
+        align-items: stretch;
+        padding: 120px 100px 80px 100px;
+        min-height: 100vh;
+      }
+
+      .section-3-special .content-left,
+      .section-3-special .content-right {
+        flex: 1;
+        max-width: 500px;
+        color: #555;
+        opacity: 0;
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .section-3-special .content-left {
+        transform: translateX(-50px);
+        padding: 0 50px 0 0;
+        text-align: left;
+      }
+
+      .section-3-special .content-right {
+        transform: translateX(50px);
+        padding: 0 0 0 50px;
+      }
+
+      .section-3-special .content-left h2,
+      .section-3-special .content-right h2 {
+        font-size: 3em;
+        color: #7d2ae8;
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .section-3-special .content-left h2 span,
+      .section-3-special .content-right h2 span {
+        color: #7d2ae8;
+      }
+
+      .section-3-special .content-left p,
+      .section-3-special .content-right p {
+        padding: 10px 0 40px 0;
+      }
+
+      .section-3-special .fade-in-left {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+      }
+
+      .section-3-special .fade-in-right {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+      }
+
+      /* Mobile Navigation */
+      .mobile-nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5em;
+        color: #555;
+        cursor: pointer;
+        padding: 10px;
+      }
+
+      .mobile-nav-toggle:hover {
+        color: #7d2ae8;
+      }
+
+      /* =========================
+         MOBILE STYLES
+         ========================= */
+      
+      @media (max-width: 768px) {
+        /* Header Mobile */
+        header {
+          padding: 15px 20px;
+          flex-wrap: wrap;
+        }
+
+        .mobile-nav-toggle {
+          display: block;
+        }
+
+        .navigation {
+          display: none;
+          width: 100%;
+          order: 3;
+          margin-top: 20px;
+          flex-direction: column;
+          background: #fbfbfb;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+          padding: 20px;
+        }
+
+        .navigation.active {
+          display: flex;
+        }
+
+        .navigation a {
+          margin: 10px 0;
+          padding: 15px 20px;
+          border-radius: 8px;
+          background: rgba(125, 42, 232, 0.05);
+          transition: all 0.3s ease;
+          text-align: center;
+        }
+
+        .navigation a:hover {
+          background: rgba(125, 42, 232, 0.1);
+          transform: translateY(-2px);
+        }
+
+        .btn-talk {
+          padding: 10px 20px;
+          font-size: 0.9em;
+        }
+
+        /* Logo Mobile */
+        .logo {
+          font-size: 1.5em;
+        }
+
+        /* Home Section Mobile */
+        .home {
+          padding: 100px 20px 80px 20px;
+          flex-direction: column;
+          text-align: center;
+          justify-content: center;
+        }
+
+        .home .content {
+          max-width: 100%;
+          opacity: 1 !important;
+          transform: none !important;
+        }
+
+        .home .content h2 {
+          font-size: 2.5em;
+          margin-bottom: 20px;
+        }
+
+        .home .content h4 {
+          font-size: 1.5em;
+          margin-bottom: 15px;
+        }
+
+        .home .content p {
+          font-size: 1.1em;
+          line-height: 1.6;
+          padding: 15px 0 30px 0;
+        }
+
+        /* Sections Mobile */
+        section {
+          min-height: auto;
+          padding: 80px 20px 60px 20px;
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .content {
+          max-width: 100%;
+          opacity: 1 !important;
+          transform: none !important;
+        }
+
+        .content h2 {
+          font-size: 2.2em;
+          margin-bottom: 20px;
+        }
+
+        .content p {
+          font-size: 1.1em;
+          line-height: 1.6;
+          padding: 15px 0 30px 0;
+        }
+
+        /* Empty Space Mobile */
+        .empty-space {
+          display: none;
+        }
+
+        /* Button Group Mobile */
+        .btn-group {
+          flex-direction: column;
+          gap: 15px;
+          margin-top: 30px;
+        }
+
+        .btn-group a {
+          padding: 15px 30px;
+          font-size: 1.1em;
+          border-radius: 12px;
+          text-align: center;
+          width: 100%;
+        }
+
+        /* Social Icons Mobile */
+        .social-icons {
+          position: relative;
+          bottom: auto;
+          margin-top: 30px;
+          text-align: center;
+        }
+
+        .social-icons a {
+          width: 45px;
+          height: 45px;
+          line-height: 45px;
+          margin: 0 10px;
+          font-size: 1.2em;
+        }
+
+        /* Section 3 Special Mobile */
+        .section-3-special {
+          flex-direction: column;
+          padding: 80px 20px 60px 20px;
+        }
+
+        .section-3-special .content-left,
+        .section-3-special .content-right {
+          max-width: 100%;
+          opacity: 1 !important;
+          transform: none !important;
+          padding: 0;
+          margin-bottom: 40px;
+          text-align: center;
+        }
+
+        .section-3-special .content-left h2,
+        .section-3-special .content-right h2 {
+          font-size: 2.2em;
+          margin-bottom: 20px;
+        }
+
+        .section-3-special .content-left p,
+        .section-3-special .content-right p {
+          font-size: 1.1em;
+          line-height: 1.6;
+          padding: 15px 0 30px 0;
+        }
+
+        /* Separators Mobile */
+        .separator {
+          height: 40px;
+        }
+
+        /* Decorative Circles Mobile */
+        .decorative-circles {
+          opacity: 0.3;
+        }
+
+        .decorative-circle.large {
+          width: 200px;
+          height: 200px;
+        }
+
+        .decorative-circle.medium {
+          width: 150px;
+          height: 150px;
+        }
+
+        .decorative-circle.small {
+          width: 100px;
+          height: 100px;
+        }
+
+        .decorative-circle.tiny {
+          width: 60px;
+          height: 60px;
+        }
+
+        /* Content Background Circles Mobile */
+        .content-bg-circle {
+          opacity: 0.3;
+          width: 200px !important;
+          height: 200px !important;
+        }
+
+        /* Smooth scrolling improvements */
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+
+      /* Tablet Styles */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        header {
+          padding: 25px 40px;
+        }
+
+        .navigation a {
+          margin-right: 25px;
+          font-size: 0.9em;
+        }
+
+        section {
+          padding: 100px 50px 60px 50px;
+        }
+
+        .home {
+          padding: 30px 50px;
+        }
+
+        .content {
+          max-width: 450px;
+        }
+
+        .content h2 {
+          font-size: 2.5em;
+        }
+
+        .section-3-special {
+          padding: 100px 50px 60px 50px;
+        }
+
+        .section-3-special .content-left,
+        .section-3-special .content-right {
+          max-width: 400px;
+        }
+
+        .section-3-special .content-left h2,
+        .section-3-special .content-right h2 {
+          font-size: 2.5em;
+        }
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <h2 class="logo"><span>A</span>lan.</h2>
+    <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav class="navigation">
+      <a href="#section1">Présentation</a>
+      <a href="#section2">Compétences</a>
+      <a href="#section3">Expériences scolaires et professionnelles</a>
+      <a href="#section4">Diplômes</a>
+      <a href="#section5">Réalisations</a>
+      <a href="#section6">Contact</a>
+    </nav>
+    <a href="#" class="btn-talk">Télécharger en PDF</a>
+  </header>
+
+  <!-- SECTION 1 -->
+  <section id="section1" class="home section-1">
+    <div class="content offscreen-left">
+      <div class="content-bg-circle" style="width: 400px; height: 400px; top: -100px; left: -150px;"></div>
+      <h2><span>Alan KUBLER</span></h2>
+      <h4>Etudiant<br> </br></h4>
+      <p>
+        Bonjour, je m'appelle Alan KUBLER, je suis né le 6 avril 2009 à
+        Wissembourg.<br />
+        Je voudrais travailler dans le domaine de la kinésithérapie, car
+        cela m'a toujours intéressé. J'ai exercé de nombreux stages dans ce
+        domaine. Aider des personnes en les rééduquant serait une fierté
+        pour moi. Je ne sauve pas des vies, mais je permets à des personnes
+        de retrouver la leur.
+      </p>
+      <div class="btn-group">
+        <a href="#section2" class="btn-suite">Suite</a>
+        <a href="#section6" class="btn-fin">Fin</a>
+      </div>
+    </div>
+    <div class="empty-space">
+      <div class="decorative-circles">
+        <div class="decorative-circle large" style="top: 15%; right: 20%;"></div>
+        <div class="decorative-circle medium" style="top: 60%; right: 10%;"></div>
+        <div class="decorative-circle small" style="top: 35%; right: 45%;"></div>
+        <div class="decorative-circle tiny" style="top: 80%; right: 60%;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Séparateur violet gauche -->
+  <div class="separator separator-left">
+    <div class="decorative-circles">
+      <div class="decorative-circle small" style="top: 20%; left: 60%; background: rgba(125, 42, 232, 0.06);"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <section id="section2" class="section-2">
+    <div class="empty-space">
+      <div class="decorative-circles">
+        <div class="decorative-circle large" style="top: 25%; left: 15%;"></div>
+        <div class="decorative-circle medium" style="top: 70%; left: 35%;"></div>
+        <div class="decorative-circle small" style="top: 10%; left: 55%;"></div>
+        <div class="decorative-circle tiny" style="top: 50%; left: 5%;"></div>
+        <div class="decorative-circle small" style="top: 85%; left: 25%;"></div>
+      </div>
+    </div>
+    <div class="content offscreen-right">
+      <div class="content-bg-circle" style="width: 350px; height: 350px; top: -80px; right: -120px;"></div>
+      <h2>Compétences<br> </br></h2>
+      <p>
+        Voici quelques compétences que j'ai acquises dans ma vie :<br />
+        • Travail en équipe<br />
+        • Communication<br />
+        • Sociable<br />
+        • Sens de l'observation<br />
+        • Patience<br />
+        • Adaptabilité<br />
+        • Informatique (montage vidéo, son, photo, codage...)<br />
+        • Langues : Français (natale); Anglais (B1); Allemand (A2)<br />
+<br> </br>
+        Je suis passioné par :<br />
+        • Voitures<br />
+        • Courses automobiles<br />
+        • Musiques<br />
+        • Découvrir de nouvelles choses<br />
+        • Sports : Course, Crossfit, Musculation, Football
+      </p>
+      <div class="btn-group">
+        <a href="#section3" class="btn-suite">Suite</a>
+        <a href="#section6" class="btn-fin">Fin</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Séparateur violet droite -->
+  <div class="separator separator-right">
+    <div class="decorative-circles">
+      <div class="decorative-circle tiny" style="top: 30%; right: 70%; background: rgba(125, 42, 232, 0.05);"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <section id="section3" class="section-3-special">
+    <div class="decorative-circles">
+      <div class="decorative-circle large" style="top: 10%; left: 35%;"></div>
+      <div class="decorative-circle medium" style="top: 45%; left: 15%;"></div>
+      <div class="decorative-circle small" style="top: 20%; left: 70%;"></div>
+      <div class="decorative-circle tiny" style="top: 75%; left: 45%;"></div>
+      <div class="decorative-circle medium" style="top: 65%; left: 80%;"></div>
+      <div class="decorative-circle small" style="top: 30%; left: 50%;"></div>
+    </div>
+    <div class="content-left offscreen-left">
+      <div class="content-bg-circle" style="width: 300px; height: 300px; top: -50px; left: -100px;"></div>
+      <h2>Expériences scolaires<br> </br></h2>
+      <p>
+        Ecole primaire : • Ecole élémentaire de Ebersheim (Septembre 2012 - Juillet 2020)<br> </br>
+	Collège : • Sem de Walbourg (Septembre 2020 - Juillet 2024)<br> </br>
+	Lycée : • Sem de Walbourg (Septembre 2024 - Juin 2027)<br> </br>
+		Spécialités de première : HGGSP (Histoire-Géographie, Géopolitique et sciences politiques);
+		SES (Sciences économiques et sociales); 
+		NSI (Numérique et sciences informatiques);
+		Option Art du son<br> </br>
+		Spécialités de terminales : HGGSP (Histoire-Géographie, Géopolitique et sciences politiques);
+		SES (Sciences économiques et sociales)
+		Option Art du son
+	<br> </br>
+      </p>
+      <div class="btn-group">
+        <a href="#section4" class="btn-suite">Suite</a>
+        <a href="#section6" class="btn-fin">Fin</a>
+      </div>
+    </div>
+    <div class="content-right offscreen-right">
+      <div class="content-bg-circle" style="width: 300px; height: 300px; top: -50px; right: -100px;"></div>
+      <h2>Expériences professionnelles<br> </br></h2>
+      <p>
+        Voici les stages que j'ai effectués :<br> </br>
+        • Stage d'observation chez un kinésithérapeute libéral (1 semaine)<br> </br>
+        • Stage dans un centre de rééducation fonctionnelle (2 semaines)<br> </br>
+        • Stage en cabinet de kinésithérapie du sport (1 semaine)<br> </br>
+        • Stage d'immersion dans un hôpital au service de kinésithérapie (1 semaine)<br> </br>
+        Ces expériences m'ont permis de découvrir différents aspects du métier de kinésithérapeute et de confirmer ma passion pour ce domaine. J'ai pu observer diverses techniques de rééducation et comprendre l'importance de l'écoute et de l'accompagnement des patients.
+      </p>
+    </div>
+  </section>
+
+  <!-- Séparateur violet gauche -->
+  <div class="separator separator-left">
+    <div class="decorative-circles">
+      <div class="decorative-circle tiny" style="top: 10%; left: 45%; background: rgba(125, 42, 232, 0.05);"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <section id="section4" class="section-2">
+    <div class="empty-space">
+      <div class="decorative-circles">
+        <div class="decorative-circle large" style="top: 30%; left: 20%;"></div>
+        <div class="decorative-circle medium" style="top: 5%; left: 45%;"></div>
+        <div class="decorative-circle small" style="top: 65%; left: 10%;"></div>
+        <div class="decorative-circle tiny" style="top: 80%; left: 50%;"></div>
+      </div>
+    </div>
+    <div class="content offscreen-right">
+      <div class="content-bg-circle" style="width: 280px; height: 280px; top: -60px; right: -90px;"></div>
+      <h2>Diplômes</h2>
+      <p>
+        J'ai obtenu :<br> </br> • Le diplôme national du brevet (DNB)<br> </br> • Le baccalauréat (BAC)<br> </br> • Formations premier secours<br> </br>
+      </p>
+      <div class="btn-group">
+        <a href="#section5" class="btn-suite">Suite</a>
+        <a href="#section6" class="btn-fin">Fin</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Séparateur violet droite -->
+  <div class="separator separator-right">
+    <div class="decorative-circles">
+      <div class="decorative-circle small" style="top: 40%; right: 55%; background: rgba(125, 42, 232, 0.06);"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <section id="section5" class="section-1">
+    <div class="content offscreen-left">
+      <div class="content-bg-circle" style="width: 320px; height: 320px; top: -70px; left: -110px;"></div>
+      <h2>Réalisations</h2>
+      <p>
+	Avec l'option Art du son, j'ai permi : <br> </br>• D'animer une soirée DJ au Sem, <br> </br>• Une soirée DJ dans une boîte de nuit à Haguenau (LE MANHATTAN), <br> </br>• De participer à l'installation du matériel de concert de ORANGE BLOSSOM,
